@@ -40,8 +40,7 @@ def find_and_kill_process(process_name):
         except psutil.NoSuchProcess:
             continue
         except psutil.AccessDenied:
-            print(
-                f"权限不足，无法终止进程: {proc.info['name']} (PID: {proc.info['pid']})")
+            print(f"权限不足，无法终止进程: {proc.info['name']} (PID: {proc.info['pid']})")
         except Exception as e:
             print(f"终止进程时发生错误: {e}")
 
@@ -84,6 +83,8 @@ if __name__ == "__main__":
     #关闭小飞机
     print('尝试关闭微星小飞机进程')
     find_and_kill_process('MSIAfterburner')
+    find_and_kill_process('RivaTunerStatisticsServer')
+
 
     # 关闭原神与BetterGI进程
     print('尝试关闭原神与BetterGI进程')
