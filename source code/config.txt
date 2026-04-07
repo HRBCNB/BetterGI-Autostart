@@ -1,6 +1,0 @@
-D:\Program Files\BetterGI\BetterGI.exe
-
-451,425
-1239,247
-1254,332
-718,227

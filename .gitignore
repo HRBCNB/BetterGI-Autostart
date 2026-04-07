@@ -1,0 +1,26 @@
+# --- Python 缓存 ---
+# 加上 **/ 确保所有子目录下的缓存都被忽略
+**/__pycache__/
+*.py[cod]
+*$py.class
+
+# --- PyInstaller & 编译构建产物 ---
+# 建议使用 **/ 匹配所有位置的 build 和 dist，防止移动文件夹后失效
+**/build/
+**/dist/
+*.spec
+# 忽略当前目录及所有子目录下的 exe 文件
+**/*.exe
+# --- 日志与调试 ---
+*.log
+# 如果有调试产生的临时数据文件夹
+**/localpycs/
+
+# --- IDE/编辑器配置 ---
+# 建议忽略所有层级的 .idea 和 .vscode
+**/.idea/
+**/.vscode/
+
+# --- 系统临时文件 ---
+Thumbs.db
+.DS_Store
