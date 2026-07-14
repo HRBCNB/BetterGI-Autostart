@@ -9,23 +9,36 @@ if %errorlevel% neq 0 (
     pause
     exit
 )
+
+:: 停止 Windows Audio 服务
+echo 正在停止系统音频服务……
+sc query Audiosrv | find "RUNNING" >nul
+
+if errorlevel 1 (
+    echo 音频服务当前未运行，无需停止。
+) else (
+    net stop Audiosrv /y
+
+    if errorlevel 1 (
+        echo 音频服务停止失败。
+    ) else (
+        echo 音频服务已停止。
+    )
+)
+
 :: 切换到指定目录
 cd /d "D:\Program Files\BetterGI"
-
-:: 将系统静音
-set srv=Audiosrv
-net start | find "Windows Audio" >nul
-if %errorlevel% equ 0 (
-    net stop "%srv%" >nul && echo 已静音
-) else (
-    echo 当前已静音，无需操作
-)
 
 :: 执行BetterGI.exe程序
 .\BetterGI.exe --startOneDragon 晚上锄地
 
 
+:: 恢复 Windows Audio 服务
+echo 正在恢复系统音频服务……
+net start Audiosrv
 
-:: 取消系统静音
-net start "Audiosrv"
-cmd
+if errorlevel 1 (
+    echo 音频服务启动失败，或者服务已经在运行。
+) else (
+    echo 音频服务已恢复。
+)cmd

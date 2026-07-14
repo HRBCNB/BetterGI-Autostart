@@ -76,7 +76,7 @@ if not exist "BetterGI.exe" (
     goto RestoreAudio
 )
 
-.\BetterGI.exe --startOneDragon 晚上锄地
+.\BetterGI.exe --startOneDragon 默认配置
 
 
 :: ==============================
